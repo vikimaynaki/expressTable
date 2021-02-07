@@ -10,7 +10,7 @@ masuk ke dalam folder project ini.
 
 ketikkan perintah <b> npm init </b>
 
-ketikkan perintah <b> npm start </b> atau <b> yarn start </b untuk menjalankan project.
+ketikkan perintah <b> npm start atau yarn start </b> untuk menjalankan project.
 
 
 <br> Buka browser dengan alamat 'http://localhost:3000'.</br>
