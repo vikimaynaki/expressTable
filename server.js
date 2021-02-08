@@ -26,6 +26,12 @@ app.use('/js', express.static(path.resolve(__dirname,"assets/js")))
 app.get('/', function(req, res) {
     res.render('index')
 })  
+app.get('/add-user', function(req, res) {
+    res.render('add_user')
+})  
+app.get('/update-user', function(req, res) {
+    res.render('update_user')
+})  
 
 app.listen(PORT, function() {
     console.log(`server is running in http://localhost:${PORT}`)
