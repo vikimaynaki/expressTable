@@ -5,6 +5,8 @@ const bodyparser = require("body-parser")
 const path = require("path")
 const { resolve } = require("path")
 const app = express()
+const connectDB = require('./server/database/connection');
+
 
 dotenv.config({path:'config.env'})
 const PORT  = process.env.PORT || 8080
@@ -12,8 +14,13 @@ const PORT  = process.env.PORT || 8080
 // log for morgan in time
 app.use(morgan('tiny'))
 
+// mongo db connection
+connectDB();
+
 // parser for to body-parser
 app.use(bodyparser.urlencoded({ extended: true}))
+
+
 
 // user template-engine
 app.set("view engine", "ejs")
@@ -23,15 +30,8 @@ app.use('/css', express.static(path.resolve(__dirname,"assets/css")))
 app.use('/img', express.static(path.resolve(__dirname,"assets/img")))
 app.use('/js', express.static(path.resolve(__dirname,"assets/js")))
 
-app.get('/', function(req, res) {
-    res.render('index')
-})  
-app.get('/add-user', function(req, res) {
-    res.render('add_user')
-})  
-app.get('/update-user', function(req, res) {
-    res.render('update_user')
-})  
+// Load Router
+app.use('/', require('./server/routes/router'))
 
 app.listen(PORT, function() {
     console.log(`server is running in http://localhost:${PORT}`)
