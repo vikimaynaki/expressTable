@@ -20,8 +20,6 @@ connectDB();
 // parser for to body-parser
 app.use(bodyparser.urlencoded({ extended: true}))
 
-
-
 // user template-engine
 app.set("view engine", "ejs")
 
